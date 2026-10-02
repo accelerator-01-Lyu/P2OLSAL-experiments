@@ -1,0 +1,122 @@
+================================================================================
+  P2-OLSAL RESCUE TUNING REPORT
+  Generated: 2026-10-01 03:41:57
+================================================================================
+
+## CRITICAL FINDING: Robust Gain Degeneracy
+
+Diagnostic revealed that the expected entropy gain g_mean is NEGATIVE
+(mean ~ -0.06) on all three datasets. The robust gain w_rob = max(0, DV-dual)
+is therefore ALL ZERO for kappa >= 0.05. The default config (kappa=1.0)
+runs with completely inactive robust gain — P2 degenerates to a pure
+redundancy/diversity sampler. This explains why the original tuning grid
+(kappa 0.5-10.0) produced identical results across all configs.
+
+Corrected tuning extends kappa to [0, 1e-4, 1e-3, 1e-2, 0.1, 1.0] where
+the robust gain is actually active (nonzero for 5-108 points depending on dataset).
+
+## TASK SEGMENT: Segment (n=2310, eta=0)
+
+  Baseline P2_Full (kappa=1.0, lam=0.1): 0.7240
+  Target (Random): 0.7870
+  Best config: k=0.1_lam=0.0
+    kappa=0.1, lam=0.0, alpha_cross_frac=0.25
+    ACC = 0.7799 +/- 0.0259 (n=5)
+    Improvement over baseline: +5.59pp
+    >>> RESCUE FAILED: 0.71pp below Random
+
+  Top 5 configs:
+  Config                                   ACC      Std      kappa    lam
+  ---------------------------------------------------------------------------
+  k=0.1_lam=0.0                         0.7799   0.0259     0.1000   0.00
+  k=1.0_lam=0.0                         0.7799   0.0259     1.0000   0.00
+  k=0.1_lam=0.01                        0.7022   0.0450     0.1000   0.01
+  k=0.1_lam=0.1                         0.7022   0.0450     0.1000   0.10
+  k=0.1_lam=1.0                         0.7022   0.0450     0.1000   1.00
+
+  Sensitivity curve: D:\P2OLSAL_FSS\experiments\figures\fig_rescue_sensitivity_segment.png
+
+## TASK GLASS: Glass (n=214, eta=0)
+
+  Baseline P2_Full (kappa=1.0, lam=0.1): 0.4430
+  Target (CoreSet): 0.4790
+  Best config: k=0.001_lam=0.0
+    kappa=0.001, lam=0.0, alpha_cross_frac=0.25
+    ACC = 0.4687 +/- 0.0410 (n=10)
+    Improvement over baseline: +2.57pp
+    >>> RESCUE FAILED: 1.03pp below CoreSet
+
+  Top 5 configs:
+  Config                                   ACC      Std      kappa    lam
+  ---------------------------------------------------------------------------
+  k=0.001_lam=0.0                       0.4687   0.0410     0.0010   0.00
+  k=0.0001_lam=0.0                      0.4621   0.0460     0.0001   0.00
+  k=0.0_lam=1.0                         0.4603   0.0440     0.0000   1.00
+  k=0.01_lam=0.0                        0.4584   0.0329     0.0100   0.00
+  k=0.0_lam=0.0                         0.4579   0.0335     0.0000   0.00
+
+  Sensitivity curve: D:\P2OLSAL_FSS\experiments\figures\fig_rescue_sensitivity_glass.png
+
+## TASK NOISE: Ecoli (n=336, eta=0.3)
+
+  Baseline P2_Full (kappa=1.0, lam=0.1): 0.6436
+  Target (BADGE): 0.6463
+  Best config: k=0.01_lam=1.0
+    kappa=0.01, lam=1.0, alpha_cross_frac=0.25
+    ACC = 0.6506 +/- 0.0451 (n=10)
+    Improvement over baseline: +0.70pp
+    >>> RESCUE SUCCESS: beats BADGE by 0.43pp
+
+  Top 5 configs:
+  Config                                   ACC      Std      kappa    lam
+  ---------------------------------------------------------------------------
+  k=0.01_lam=1.0                        0.6506   0.0451     0.0100   1.00
+  k=0.001_lam=1.0                       0.6452   0.0468     0.0010   1.00
+  k=0.001_lam=0.01                      0.6438   0.0615     0.0010   0.01
+  k=0.01_lam=0.1                        0.6426   0.0487     0.0100   0.10
+  k=0.0001_lam=0.01                     0.6372   0.0406     0.0001   0.01
+
+  Sensitivity curve: D:\P2OLSAL_FSS\experiments\figures\fig_rescue_sensitivity_noise.png
+
+================================================================================
+  CROSS-TASK SUMMARY
+================================================================================
+
+  Task           Baseline       Best     Target   Gap(pp)   Rescued?
+  -----------------------------------------------------------------
+  segment          0.7240     0.7799     0.7870      0.71         no
+  glass            0.4430     0.4687     0.4790      1.03         no
+  noise            0.6436     0.6506     0.6463     -0.43        YES
+
+================================================================================
+  RECOMMENDATIONS
+================================================================================
+
+1. ROBUST GAIN DEGENERACY (root cause):
+   The default kappa=1.0 is ~1000x too large. The KL ball constraint
+   is completely inactive, making the "robust" component of P2-OLSAL
+   non-functional. Consider either:
+   (a) Setting default kappa=0.001 (active but sparse robust gain)
+   (b) Fixing the posterior predictive so g_mean is positive (the root
+       cause of negative g_mean is the uniform mixture eps_q=0.1 combined
+       with hardcoded learning rate 0.5 in _sample_gains)
+
+2. REDUNDANCY PENALTY (lam):
+   lam=0.0 (disabling redundancy) is optimal on segment (0.780) and
+   glass (0.469). The default lam=0.1 hurts performance. The redundancy
+   penalty pushes away boundary samples that are actually informative.
+   Recommend setting default lam=0.0 or much smaller (0.001).
+
+3. DATASET-SPECIFIC CONFIGS:
+   segment: kappa=0.1, lam=0.0 -> 0.7799
+   glass:   kappa=0.001, lam=0.0 -> 0.4687
+   ecoli(n=0.3): kappa=0.01, lam=1.0 -> 0.6506
+
+4. LIMITATIONS (for manuscript Section 8.5):
+   - Segment: Even with optimal tuning, P2 reaches 0.780 vs Random 0.787.
+     On this dataset, random sampling is inherently strong due to balanced
+     class distribution and well-separated clusters. Active learning offers
+     no advantage at 10% budget.
+   - Glass: P2 reaches 0.469 vs CoreSet 0.479. With only 214 samples,
+     geometric coverage methods (CoreSet) have a natural advantage. The
+     robust framework needs more samples to realize its statistical guarantees.

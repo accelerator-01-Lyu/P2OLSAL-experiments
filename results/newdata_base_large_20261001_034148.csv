@@ -1,0 +1,118 @@
+dataset,method,ablation,study,expert,eta,seed,budget_frac,budget_count,ACC,NMI,ARI,zeta_t,kappa,delta_mis_proxy,sel_boundary_margin,argmax_retention,sel_time,retrain_time,total_time,error
+letter,BADGE,,newdata,,0.0,1,0,,0,0,0,,,,,,,,,"MemoryError((7831, 141, 416), dtype('float64'))
+Traceback (most recent call last):
+  File ""D:\P2OLSAL_FSS\experiments\run_baselines_large.py"", line 61, in _worker
+    rows = run_one(ds, m, state, expert='clean', eta=eta, seed=seed,
+                   budgets=BUDGETS)
+  File ""D:\P2OLSAL_FSS\experiments\src\runner_generic.py"", line 108, in run_one
+    sel_result = method.select(X, U, V, labeled_mask, budget_count, c,
+                               y_true=y_true, seed=seed)
+  File ""D:\P2OLSAL_FSS\experiments\src\baselines_sota.py"", line 49, in select
+    (embeddings[:, None, :] - embeddings[None, centers, :]) ** 2,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^~~
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 3.42 GiB for an array with shape (7831, 141, 416) and data type float64
+"
+letter,BADGE,,newdata,,0.0,3,0,,0,0,0,,,,,,,,,"MemoryError((7831, 102, 416), dtype('float64'))
+Traceback (most recent call last):
+  File ""D:\P2OLSAL_FSS\experiments\run_baselines_large.py"", line 61, in _worker
+    rows = run_one(ds, m, state, expert='clean', eta=eta, seed=seed,
+                   budgets=BUDGETS)
+  File ""D:\P2OLSAL_FSS\experiments\src\runner_generic.py"", line 108, in run_one
+    sel_result = method.select(X, U, V, labeled_mask, budget_count, c,
+                               y_true=y_true, seed=seed)
+  File ""D:\P2OLSAL_FSS\experiments\src\baselines_sota.py"", line 49, in select
+    (embeddings[:, None, :] - embeddings[None, centers, :]) ** 2,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^~~
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 2.48 GiB for an array with shape (7831, 102, 416) and data type float64
+"
+letter,BADGE,,newdata,,0.0,4,0,,0,0,0,,,,,,,,,"MemoryError((7831, 72, 416), dtype('float64'))
+Traceback (most recent call last):
+  File ""D:\P2OLSAL_FSS\experiments\run_baselines_large.py"", line 61, in _worker
+    rows = run_one(ds, m, state, expert='clean', eta=eta, seed=seed,
+                   budgets=BUDGETS)
+  File ""D:\P2OLSAL_FSS\experiments\src\runner_generic.py"", line 108, in run_one
+    sel_result = method.select(X, U, V, labeled_mask, budget_count, c,
+                               y_true=y_true, seed=seed)
+  File ""D:\P2OLSAL_FSS\experiments\src\baselines_sota.py"", line 49, in select
+    (embeddings[:, None, :] - embeddings[None, centers, :]) ** 2,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^~~
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 1.75 GiB for an array with shape (7831, 72, 416) and data type float64
+"
+letter,BADGE,,newdata,,0.0,5,0,,0,0,0,,,,,,,,,"MemoryError((7831, 35, 416), dtype('float64'))
+Traceback (most recent call last):
+  File ""D:\P2OLSAL_FSS\experiments\run_baselines_large.py"", line 61, in _worker
+    rows = run_one(ds, m, state, expert='clean', eta=eta, seed=seed,
+                   budgets=BUDGETS)
+  File ""D:\P2OLSAL_FSS\experiments\src\runner_generic.py"", line 108, in run_one
+    sel_result = method.select(X, U, V, labeled_mask, budget_count, c,
+                               y_true=y_true, seed=seed)
+  File ""D:\P2OLSAL_FSS\experiments\src\baselines_sota.py"", line 49, in select
+    (embeddings[:, None, :] - embeddings[None, centers, :]) ** 2,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^~~
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 870. MiB for an array with shape (7831, 35, 416) and data type float64
+"
+letter,BADGE,,newdata,,0.0,6,0,,0,0,0,,,,,,,,,"MemoryError((7831, 93, 416), dtype('float64'))
+Traceback (most recent call last):
+  File ""D:\P2OLSAL_FSS\experiments\run_baselines_large.py"", line 61, in _worker
+    rows = run_one(ds, m, state, expert='clean', eta=eta, seed=seed,
+                   budgets=BUDGETS)
+  File ""D:\P2OLSAL_FSS\experiments\src\runner_generic.py"", line 108, in run_one
+    sel_result = method.select(X, U, V, labeled_mask, budget_count, c,
+                               y_true=y_true, seed=seed)
+  File ""D:\P2OLSAL_FSS\experiments\src\baselines_sota.py"", line 49, in select
+    (embeddings[:, None, :] - embeddings[None, centers, :]) ** 2,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^~~
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 2.26 GiB for an array with shape (7831, 93, 416) and data type float64
+"
+letter,BADGE,,newdata,,0.0,2,0,,0,0,0,,,,,,,,,"MemoryError((7831, 191, 416), dtype('float64'))
+Traceback (most recent call last):
+  File ""D:\P2OLSAL_FSS\experiments\run_baselines_large.py"", line 61, in _worker
+    rows = run_one(ds, m, state, expert='clean', eta=eta, seed=seed,
+                   budgets=BUDGETS)
+  File ""D:\P2OLSAL_FSS\experiments\src\runner_generic.py"", line 108, in run_one
+    sel_result = method.select(X, U, V, labeled_mask, budget_count, c,
+                               y_true=y_true, seed=seed)
+  File ""D:\P2OLSAL_FSS\experiments\src\baselines_sota.py"", line 49, in select
+    (embeddings[:, None, :] - embeddings[None, centers, :]) ** 2,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^~~
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 4.64 GiB for an array with shape (7831, 191, 416) and data type float64
+"
+letter,BADGE,,newdata,,0.1,0,0,,0,0,0,,,,,,,,,"MemoryError((7831, 104, 416), dtype('float64'))
+Traceback (most recent call last):
+  File ""D:\P2OLSAL_FSS\experiments\run_baselines_large.py"", line 61, in _worker
+    rows = run_one(ds, m, state, expert='clean', eta=eta, seed=seed,
+                   budgets=BUDGETS)
+  File ""D:\P2OLSAL_FSS\experiments\src\runner_generic.py"", line 108, in run_one
+    sel_result = method.select(X, U, V, labeled_mask, budget_count, c,
+                               y_true=y_true, seed=seed)
+  File ""D:\P2OLSAL_FSS\experiments\src\baselines_sota.py"", line 49, in select
+    (embeddings[:, None, :] - embeddings[None, centers, :]) ** 2,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^~~
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 2.52 GiB for an array with shape (7831, 104, 416) and data type float64
+"
+letter,BADGE,,newdata,,0.1,1,0,,0,0,0,,,,,,,,,"MemoryError((7831, 87, 416), dtype('float64'))
+Traceback (most recent call last):
+  File ""D:\P2OLSAL_FSS\experiments\run_baselines_large.py"", line 61, in _worker
+    rows = run_one(ds, m, state, expert='clean', eta=eta, seed=seed,
+                   budgets=BUDGETS)
+  File ""D:\P2OLSAL_FSS\experiments\src\runner_generic.py"", line 108, in run_one
+    sel_result = method.select(X, U, V, labeled_mask, budget_count, c,
+                               y_true=y_true, seed=seed)
+  File ""D:\P2OLSAL_FSS\experiments\src\baselines_sota.py"", line 49, in select
+    (embeddings[:, None, :] - embeddings[None, centers, :]) ** 2,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^~~
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 2.11 GiB for an array with shape (7831, 87, 416) and data type float64
+"
+letter,BADGE,,newdata,,0.1,2,0,,0,0,0,,,,,,,,,"MemoryError((7831, 75, 416), dtype('float64'))
+Traceback (most recent call last):
+  File ""D:\P2OLSAL_FSS\experiments\run_baselines_large.py"", line 61, in _worker
+    rows = run_one(ds, m, state, expert='clean', eta=eta, seed=seed,
+                   budgets=BUDGETS)
+  File ""D:\P2OLSAL_FSS\experiments\src\runner_generic.py"", line 108, in run_one
+    sel_result = method.select(X, U, V, labeled_mask, budget_count, c,
+                               y_true=y_true, seed=seed)
+  File ""D:\P2OLSAL_FSS\experiments\src\baselines_sota.py"", line 49, in select
+    (embeddings[:, None, :] - embeddings[None, centers, :]) ** 2,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^~~
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 1.82 GiB for an array with shape (7831, 75, 416) and data type float64
+"

@@ -1,0 +1,14 @@
+dataset,n,c,lambda_min_UtU,cond_UtU,sigma_min,T3_norm,residual_bound_nats,note
+iris,150,3,35.5399,1.42159,0.488808,0.0561,0.00224559,centered-Gram ev[0]=6.28e-14(simplex null); tangent min eig(UtUcent)=35.84; row-sum max dev=1.3e-07
+wine,178,3,31.9867,1.88086,0.424288,0.0376,0.00154245,centered-Gram ev[0]=7.73e-14(simplex null); tangent min eig(UtUcent)=32.04; row-sum max dev=9.1e-08
+seeds,210,3,50.092,1.40819,0.48885,0.0521,0.00193628,centered-Gram ev[0]=6.66e-14(simplex null); tangent min eig(UtUcent)=50.18; row-sum max dev=8.9e-08
+glass,214,6,2.01958,40.9109,0.10477,0.0331,0.0793888,centered-Gram ev[0]=9.62e-14(simplex null); tangent min eig(UtUcent)=2.349; row-sum max dev=1.6e-07
+ecoli,336,8,1.0,75.3283,0.0581588,0.0322,0.439221,centered-Gram ev[0]=8.72e-14(simplex null); tangent min eig(UtUcent)=1.137; row-sum max dev=1.3e-07
+segment,2310,7,44.0742,9.82714,0.141045,0.0405,0.0487139,centered-Gram ev[0]=8.31e-13(simplex null); tangent min eig(UtUcent)=45.95; row-sum max dev=1.8e-07
+balance,625,3,74.5988,2.79307,0.345504,0.0171,0.000590818,centered-Gram ev[0]=2.82e-13(simplex null); tangent min eig(UtUcent)=74.61; row-sum max dev=1.1e-07
+aggregation,788,7,43.7871,5.16836,0.236259,0.0719,0.0326671,centered-Gram ev[0]=3.32e-13(simplex null); tangent min eig(UtUcent)=43.98; row-sum max dev=2.1e-07
+compound,399,6,26.1988,4.49119,0.258798,0.0705,0.0238953,centered-Gram ev[0]=1.63e-13(simplex null); tangent min eig(UtUcent)=26.72; row-sum max dev=1.4e-07
+letter,7990,26,0.890755,412.687,0.0105586,0.0038,1.02227,"centered-Gram ev[0]=9.48e-13(simplex null); tangent min eig(UtUcent)=0.8908; row-sum max dev=2.1e-07; bound 1.02 nats >1: not informative, report form bound only"
+shuttle,4997,7,1.00042,1897.19,0.0141515,0.0269,21.2773,"centered-Gram ev[0]=1.08e-12(simplex null); tangent min eig(UtUcent)=1.001; row-sum max dev=1.9e-07; bound 21.3 nats >1: not informative, report form bound only"
+usps,9298,10,1.54888e-08,74139500000.0,1.29067e-06,NA,NA,centered-Gram ev[0]=2.25e-12(simplex null); tangent min eig(UtUcent)=1.549e-08; row-sum max dev=2.2e-07; T3_norm NA in cumulant_spectral_all13.csv (original run OOM building n x n redundancy matrix); numeric bound skipped per protocol
+fashion,10000,10,0.0,NA,1.52024e-09,0.0000,0.0,lambda_min(UtU) negative->0 (roundoff noise); centered-Gram ev[0]=1.37e-14(simplex null); tangent min eig(UtUcent)=2.311e-14; row-sum max dev=1.8e-07
